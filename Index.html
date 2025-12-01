@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Material Requirement Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Calculator - Requirement of Materials</h1>
+
+  <div class="card no-print">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="itemSelect">Item of Work</label>
+        <select id="itemSelect">
+          <option value="">-- Select Item of Work --</option>
+          </select>
+        <div id="itemError" class="error" style="display:none;"></div>
+      </div>
+
+      <div class="form-group unit-group">
+        <label>Unit of Item</label>
+        <div class="unit-display-box">
+          <span id="itemUnit">–</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="itemQty">Estimated Quantity</label>
+        <input
+          type="number"
+          id="itemQty"
+          placeholder="Enter quantity"
+          min="0"
+          step="0.001"
+        />
+        <div id="qtyError" class="error" style="display:none;"></div>
+      </div>
+
+      <div class="form-group calculate-group">
+        <button id="calcBtn" class="btn">Calculate</button>
+      </div>
+    </div>
+
+    <div class="save-row">
+      <button id="saveBtn" class="btn btn-secondary">Save Item of Work</button>
+    </div>
+
+    <div id="resultContainer">
+      <div class="no-data" id="noDataMsg">
+        Select an item, enter quantity and click [Calculate] to see material requirements.
+      </div>
+
+      <table id="resultTable" style="display:none;">
+        <caption id="tableCaption"></caption>
+        <thead>
+          <tr>
+            <th>Sl. No.</th>
+            <th>Name of Material</th>
+            <th>Quantity</th>
+            <th>Unit</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="savedSection">
+    <div id="noSavedMsg" class="no-data">
+      No items saved yet. Use [Save Item of Work] to build the cumulative material statement.
+    </div>
+
+    <div id="savedItemsWrapper" style="display:none;">
+      <div class="section-title">Saved Item of Works</div>
+      <table id="savedItemsTable">
+        <thead>
+          <tr>
+            <th>Sl. No.</th>
+            <th>Item of Work</th>
+            <th>Estimated Quantity</th>
+            <th>Unit</th>
+            <th class="no-print">Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <div id="totalMaterialsWrapper" style="display:none;">
+      <div class="section-title">Total Requitement of Materials for All Saved Items</div>
+      <table id="totalMaterialsTable">
+        <thead>
+          <tr>
+            <th>Sl. No.</th>
+            <th>Name of Material</th>
+            <th>Total Quantity</th>
+            <th>Unit</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <div id="savedButtonsRow" class="saved-buttons-row no-print" style="display:none;">
+      <button id="clearBtn" class="btn btn-danger btn-sm">Clear All Saved Items</button>
+      <button id="printBtn" class="btn btn-sm">Print PDF</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
