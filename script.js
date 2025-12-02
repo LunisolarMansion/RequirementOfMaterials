@@ -217,7 +217,8 @@ const ITEMS = {
   "15 cm Thick stone soling": {
     unit: "Sqm.",
     materials: {
-      "Stone (In cum)": 0.15
+      "Stone (In cum)": 0.15,
+      "Sand (In Cum)": 0.045
     }
   }
 };
