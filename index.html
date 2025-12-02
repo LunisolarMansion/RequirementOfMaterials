@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Calculator - Requirement of Materials</h1>
+  <h1>Material Requirement Calculator</h1>
 
   <div class="card no-print">
     <div class="form-row">
@@ -20,7 +20,7 @@
       </div>
 
       <div class="form-group unit-group">
-        <label>Unit of Item</label>
+        <label>Unit</label>
         <div class="unit-display-box">
           <span id="itemUnit">–</span>
         </div>
@@ -67,47 +67,50 @@
     </div>
   </div>
 
-  <div id="savedSection">
-    <div id="noSavedMsg" class="no-data">
-      No items saved yet. Use [Save Item of Work] to build the cumulative material statement.
-    </div>
+  <div id="savedSectionCard" class="card" style="margin-top: 20px;">
+    <div id="savedSection">
+      <div id="noSavedMsg" class="no-data">
+        No items saved yet. Use [Save Item of Work] to build the cumulative material statement.
+      </div>
 
-    <div id="savedItemsWrapper" style="display:none;">
-      <div class="section-title">Saved Item of Works</div>
-      <table id="savedItemsTable">
-        <thead>
-          <tr>
-            <th>Sl. No.</th>
-            <th>Item of Work</th>
-            <th>Estimated Quantity</th>
-            <th>Unit</th>
-            <th class="no-print">Actions</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </div>
+      <div id="savedItemsWrapper" style="display:none;">
+        <div class="section-title">Saved Items of Work</div>
+        <table id="savedItemsTable">
+          <thead>
+            <tr>
+              <th>Sl. No.</th>
+              <th>Item of Work</th>
+              <th>Estimated Quantity</th>
+              <th>Unit</th>
+              <th class="no-print">Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
 
-    <div id="totalMaterialsWrapper" style="display:none;">
-      <div class="section-title">Total Requitement of Materials for All Saved Items</div>
-      <table id="totalMaterialsTable">
-        <thead>
-          <tr>
-            <th>Sl. No.</th>
-            <th>Name of Material</th>
-            <th>Total Quantity</th>
-            <th>Unit</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </div>
+      <div id="totalMaterialsWrapper" style="display:none;">
+        <div class="section-title">Total Materials for All Saved Items</div>
+        <table id="totalMaterialsTable">
+          <thead>
+            <tr>
+              <th>Sl. No.</th>
+              <th>Name of Material</th>
+              <th>Total Quantity</th>
+              <th>Unit</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
 
-    <div id="savedButtonsRow" class="saved-buttons-row no-print" style="display:none;">
-      <button id="clearBtn" class="btn btn-danger btn-sm">Clear All Saved Items</button>
-      <button id="printBtn" class="btn btn-sm">Print PDF</button>
+      <div id="savedButtonsRow" class="saved-buttons-row no-print" style="display:none;">
+        <button id="clearBtn" class="btn btn-danger btn-sm">Clear All Saved Items</button>
+        <button id="printBtn" class="btn btn-sm">Print PDF</button>
+      </div>
     </div>
   </div>
+
 
   <script src="script.js"></script>
 </body>
