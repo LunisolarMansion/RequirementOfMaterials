@@ -6,7 +6,8 @@
 body {
   margin: 0;
   padding: 20px;
-  background: #f5f7fb;
+  /* 💡 NEW: Richer, cool background color to highlight the cards */
+  background: #e9eff6; 
 }
 
 h1 {
@@ -85,14 +86,14 @@ input[type="number"]:focus {
   padding: 8px 16px;
   font-size: 14px;
   font-weight: 600;
-  background: #3f7de0;
+  background: #513fe0;
   color: #ffffff;
   transition: background 0.15s ease, transform 0.05s ease;
   width: 100%; /* Ensure button takes full width in its container */
 }
 
 .btn:hover {
-  background: #356bbe;
+  background: #7365e6;
 }
 
 .btn:active {
@@ -104,18 +105,19 @@ input[type="number"]:focus {
   cursor: not-allowed;
 }
 
+/* 💡 NEW: Green color for the 'Save Item of Work' button (.btn-secondary) */
 .btn-secondary {
-  background: #4b5563;
+  background: #059669; /* Green */
 }
 .btn-secondary:hover {
-  background: #374151;
+  background: #10b981; /* Darker Green on hover */
 }
 
 .btn-danger {
-  background: #b91c1c;
+  background: #c64646;
 }
 .btn-danger:hover {
-  background: #991b1b;
+  background: #d26f6f;
 }
 
 .btn-sm {
@@ -148,13 +150,119 @@ th,
 td {
   border: 1px solid #dde3f0;
   padding: 6px 8px;
-  text-align: left;
+  /* Set a broad default left alignment here, which the specific rules below will override */
+  text-align: left; 
 }
 
 th {
   font-weight: 600;
   color: #333;
 }
+
+/* === Custom Table Widths & Alignment === */
+
+/* #1: Per-Item Result Table (resultTable) and #3: Total Materials Summary Table (totalMaterialsTable) - 4 Columns */
+/* Standard widths for 4-column tables */
+const SL_NO_WIDTH_4 = '7%';
+const UNIT_WIDTH_4 = '15%';
+const QTY_WIDTH_4 = '18%';
+
+/* Set Widths for 4-column tables (resultTable, totalMaterialsTable) */
+#resultTable th:nth-child(1),
+#totalMaterialsTable th:nth-child(1), 
+#resultTable td:nth-child(1),
+#totalMaterialsTable td:nth-child(1) {
+    width: SL_NO_WIDTH_4; 
+    min-width: 30px;
+}
+#resultTable th:nth-child(2),
+#totalMaterialsTable th:nth-child(2), /* Material Name (Remaining Width) */
+#resultTable td:nth-child(2),
+#totalMaterialsTable td:nth-child(2) {
+    /* Remaining width: 100% - SL_NO_WIDTH - QTY_WIDTH - UNIT_WIDTH */
+    width: calc(100% - 7% - 18% - 15%); 
+}
+#resultTable th:nth-child(3),
+#totalMaterialsTable th:nth-child(3), 
+#resultTable td:nth-child(3),
+#totalMaterialsTable td:nth-child(3) {
+    width: QTY_WIDTH_4; 
+    min-width: 70px;
+}
+#resultTable th:nth-child(4),
+#totalMaterialsTable th:nth-child(4), 
+#resultTable td:nth-child(4),
+#totalMaterialsTable td:nth-child(4) {
+    width: UNIT_WIDTH_4; 
+    min-width: 60px;
+}
+
+
+/* #2: Saved Items List Table (savedItemsTable) - 5 Columns */
+/* Standard widths for 5-column table */
+const SL_NO_WIDTH_5 = '7%';
+const UNIT_WIDTH_5 = '15%';
+const QTY_WIDTH_5 = '18%';
+const ACTION_WIDTH_5 = '15%';
+
+/* Set Widths for 5-column table (savedItemsTable) */
+#savedItemsTable th:nth-child(1), 
+#savedItemsTable td:nth-child(1) {
+    width: SL_NO_WIDTH_5; 
+    min-width: 30px;
+}
+#savedItemsTable th:nth-child(2), /* Item of Work (Remaining Width) */
+#savedItemsTable td:nth-child(2) {
+    /* Remaining width: 100% - SL_NO_WIDTH - QTY_WIDTH - UNIT_WIDTH - ACTION_WIDTH */
+    width: calc(100% - 7% - 18% - 15% - 15%); 
+}
+#savedItemsTable th:nth-child(3), 
+#savedItemsTable td:nth-child(3) {
+    width: QTY_WIDTH_5; 
+    min-width: 70px;
+}
+#savedItemsTable th:nth-child(4), 
+#savedItemsTable td:nth-child(4) {
+    width: UNIT_WIDTH_5; 
+    min-width: 60px;
+}
+#savedItemsTable th:nth-child(5), /* Actions (Fixed Width) */
+#savedItemsTable td:nth-child(5) {
+    width: ACTION_WIDTH_5; 
+    min-width: 80px;
+}
+
+
+/* === FINAL ALIGNMENT OVERRIDES - PLACED AT THE END FOR MAX SPECIFICITY === */
+
+/* Column 1: Sl. No. - Center Aligned */
+table th:nth-child(1),
+table td:nth-child(1) {
+    text-align: center !important; 
+}
+
+/* Column 3: Quantity/Estimated Quantity/Total Quantity - Right Aligned */
+#resultTable th:nth-child(3),
+#resultTable td:nth-child(3),
+#savedItemsTable th:nth-child(3),
+#savedItemsTable td:nth-child(3),
+#totalMaterialsTable th:nth-child(3),
+#totalMaterialsTable td:nth-child(3) {
+    text-align: right !important;
+}
+
+/* Column 4: Unit - Left Aligned */
+#resultTable th:nth-child(4),
+#resultTable td:nth-child(4),
+#savedItemsTable th:nth-child(4),
+#savedItemsTable td:nth-child(4),
+#totalMaterialsTable th:nth-child(4),
+#totalMaterialsTable td:nth-child(4) {
+    text-align: left !important;
+}
+
+
+/* === End Custom Table Widths & Alignment === */
 
 tbody tr:nth-child(even) {
   background: #fafbff;
@@ -187,7 +295,7 @@ caption {
   margin-top: 4px;
 }
 .save-row .btn {
-    width: auto; /* The save button should not take the full row width */
+    width: auto;
 }
 
 .saved-buttons-row {
@@ -198,6 +306,8 @@ caption {
 .saved-buttons-row .btn-sm {
   margin-left: 4px;
 }
+
+.no-print {}
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
@@ -222,7 +332,6 @@ caption {
 }
 
 @media (max-width: 640px) {
-  /* This breakpoint was in the original HTML and is maintained */
   .form-row {
     flex-direction: column;
   }
@@ -231,19 +340,24 @@ caption {
   }
 }
 
-/* Print only the saved section (two tables), hide buttons and other UI */
+/* Print only the saved section (now inside #savedSectionCard), hide buttons and other UI */
 @media print {
   body * {
     visibility: hidden;
   }
-  #savedSection, #savedSection * {
+  #savedSectionCard, #savedSectionCard * {
     visibility: visible;
   }
-  #savedSection {
+  #savedSectionCard {
     position: absolute;
     left: 0;
     top: 0;
     width: 100%;
+    /* Reset card styling for print */
+    padding: 0; 
+    box-shadow: none;
+    background: none;
+    margin: 0;
   }
   .no-print {
     display: none !important;
